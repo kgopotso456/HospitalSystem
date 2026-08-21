@@ -1,28 +1,25 @@
 package com.mycompany.hospitalsystem;
 
 public class Inpatient extends Patient {
-    private int daysAdmitted;
-    private double dailyRate;
+    private String wardNumber;
+    private String bedNumber; // e.g., B01
 
-    public Inpatient(String patientId, String name, String surname, int age, PatientCategory category, int daysAdmitted, double dailyRate) {
-        super(patientId, name, surname, age, category);
-        this.daysAdmitted = daysAdmitted;
-        this.dailyRate = dailyRate;
+    public Inpatient(String patientId, String firstName, String lastName, int age, String gender, String medicalCondition, PatientCategory category, String wardNumber, String bedNumber) {
+        super(patientId, firstName, lastName, age, gender, medicalCondition, category);
+        this.wardNumber = wardNumber;
+        this.bedNumber = bedNumber;
     }
 
-    public int getDaysAdmitted() { return daysAdmitted; }
-    public void setDaysAdmitted(int daysAdmitted) { this.daysAdmitted = daysAdmitted; }
+    public String getWardNumber() { return wardNumber; }
+    public void setWardNumber(String wardNumber) { this.wardNumber = wardNumber; }
 
-    public double getDailyRate() { return dailyRate; }
-    public void setDailyRate(double dailyRate) { this.dailyRate = dailyRate; }
-
-    public double calculateTotalBill() {
-        return daysAdmitted * dailyRate;
-    }
+    public String getBedNumber() { return bedNumber; }
+    public void setBedNumber(String bedNumber) { this.bedNumber = bedNumber; }
 
     @Override
-    public void displayPatientInfo() {
-        super.displayPatientInfo();
-        System.out.println("Days Admitted: " + daysAdmitted + ", Daily Rate: R" + dailyRate + ", Total Bill: R" + calculateTotalBill());
+    public void displayDetails() {
+        super.displayDetails();
+        System.out.println("Ward Number: " + (wardNumber == null || wardNumber.isEmpty() ? "Not assigned" : wardNumber));
+        System.out.println("Bed Number: " + (bedNumber == null || bedNumber.isEmpty() ? "Not allocated" : bedNumber));
     }
 }
