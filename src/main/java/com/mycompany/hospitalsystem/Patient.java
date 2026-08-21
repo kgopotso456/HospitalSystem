@@ -1,13 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.hospitalsystem;
 
-/**
- *
- * @author kgopo
- */
 public class Patient {
-    
+    private String patientId;
+    private String name;
+    private int age;
+    private PatientCategory category;
+
+    public Patient(String patientId, String name, int age, PatientCategory category) {
+        this.patientId = patientId;
+        this.name = name;
+        this.age = age;
+        this.category = category;
+    }
+
+    public String getPatientId() { return patientId; }
+    public String getName() { return name; }
+    public int getAge() { return age; }
+    public PatientCategory getCategory() { return category; }
+
+    public void displayPatientInfo() {
+        System.out.println("ID: " + patientId + ", Name: " + name + ", Age: " + age + ", Category: " + category);
+    }
 }
