@@ -16,10 +16,9 @@ public class Inpatient extends Patient {
     public String getBedNumber() { return bedNumber; }
     public void setBedNumber(String bedNumber) { this.bedNumber = bedNumber; }
 
-    @Override
-    public void displayDetails() {
-        super.displayDetails();
-        System.out.println("Ward Number: " + (wardNumber == null || wardNumber.isEmpty() ? "Not assigned" : wardNumber));
-        System.out.println("Bed Number: " + (bedNumber == null || bedNumber.isEmpty() ? "Not allocated" : bedNumber));
+   @Override
+public void displayDetails() {
+    super.displayDetails();
+    System.out.println("Ward Number: " + (wardNumber == null || wardNumber.isEmpty() ? "Not assigned" : wardNumber));
     }
 }

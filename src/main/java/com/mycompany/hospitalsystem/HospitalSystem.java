@@ -130,14 +130,19 @@ public class HospitalSystem {
                     System.out.print("Enter Patient ID to update: ");
                     String updateId = scanner.nextLine();
                     Patient pUpdate = findPatientById(patients, updateId);
-                    
+    
                     if (pUpdate == null) {
-                        System.out.println("Patient not found.");
-                        break;
-                    }
+                   System.out.println("Patient not found.");
+                    break;
+                   }
+
 
                     int updateChoice;
                     do {
+                        System.out.println("\nCURRENT PATIENT INFORMATION:");
+                        System.out.println("----------------------------------------------");
+                        pUpdate.displayDetails();
+                        System.out.println("----------------------------------------------");
                         System.out.println("\nWHAT WOULD YOU LIKE TO CHANGE?");
                         System.out.println("----------------------------------------------");
                         System.out.println("1. First Name");
@@ -302,15 +307,25 @@ public class HospitalSystem {
                     System.out.println("\nBED LAYOUT");
                     System.out.println("----------------------------------------------");
                     for (int r = 0; r < 4; r++) {
-                        for (int c = 0; c < 5; c++) {
-                            int bedNum = (r * 5) + c + 1;
-                            String label = (bedNum < 10) ? "B0" + bedNum : "B" + bedNum;
-                            String status = wardGrid[r][c].equals("[Available]") ? "[Available]" : "[" + wardGrid[r][c] + "]";
-                            System.out.print(status + "\t");
-                        }
-                        System.out.println();
-                    }
-                    break;
+                       for (int c = 0; c < 5; c++) {
+                         // Calculate the bed number (1 to 20)
+                          int bedNum = (r * 5) + c + 1;
+                                 String bedLabel = (bedNum < 10) ? "B0" + bedNum : "B" + bedNum;
+            
+                                   // Format status: if it's available, keep [Available], otherwise use [Patient Name]
+                                   String status = wardGrid[r][c];
+                                if (status.equals("[Available]")) {
+                             status = "[Available]";
+                     } else {
+                status = "[" + status + "]";
+            }
+            
+            // Print combined format: B01[Available] or B02[Karabo Maloko]
+            System.out.print(bedLabel + status + "\t");
+        }
+        System.out.println();
+    }
+    break;
 
                 case 9:
                     System.out.println("\nAVAILABLE BEDS");
@@ -363,7 +378,7 @@ public class HospitalSystem {
 
                 case 12:
                     Collections.sort(patients);
-                    System.out.println("\nPatients sorted alphabetically by Last Name.");
+                    System.out.println("\nPatients sorted alphabetically by Last .");
                     break;
 
                 case 13:
